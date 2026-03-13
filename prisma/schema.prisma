@@ -1,0 +1,47 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model OrgProfile {
+  id               String   @id @default(cuid())
+  name             String
+  clinicalFocus    String
+  populationServed String
+  annualBudget     String
+  staffCount       String
+  state            String
+  existingGrants   String
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model SavedGrant {
+  id                String         @id @default(cuid())
+  grantId           String         @unique
+  title             String
+  agency            String
+  description       String
+  deadline          String?
+  awardFloor        Int?
+  awardCeiling      Int?
+  opportunityNumber String?
+  status            PipelineStatus @default(RESEARCHING)
+  aiScore           Int?
+  aiSummary         String?
+  notes             String?
+  createdAt         DateTime       @default(now())
+  updatedAt         DateTime       @updatedAt
+}
+
+enum PipelineStatus {
+  RESEARCHING
+  QUALIFYING
+  APPLYING
+  SUBMITTED
+  AWARDED
+  DECLINED
+}
