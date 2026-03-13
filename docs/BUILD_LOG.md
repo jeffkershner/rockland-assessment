@@ -54,8 +54,9 @@ Added enums for PipelineStatus
 - Tested endpoints
 - Made sure the build succeeds
 
-### [13:00]
-- Testing endpoints 
+### [12:55]
+- Deploying early to make sure it deploys correctly with vercel 
+- Can't use file based database on vercel, switching to neon
 
 ### [00:XX] Build passing
 

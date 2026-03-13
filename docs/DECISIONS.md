@@ -2,7 +2,7 @@
 
 ## Stack
 - **Framework:** Next.js 16 — App Router, TypeScript strict
-- **Database:** SQLite + Prisma ORM (local-first, zero-config for demo)
+- **Database:** Neon Postgres 17 database
 - **AI:** Claude API (Anthropic SDK) for grant fit scoring
 - **Auth:** Skipped
 - **UI:** shadcn/ui + Tailwind
@@ -16,7 +16,7 @@ SQLite over Postgres: For a single-user prototype, SQLite eliminates external DB
 
 | Decision | Choice | Reasoning |
 |---|---|---|
-| Database | SQLite + Prisma | Zero-config local dev, no external services needed |
+| Database | neon postgres + Prisma | local sql lite will not work at vercel |
 | AI scoring | Claude Sonnet | Best cost/quality ratio for structured JSON output |
 | Grants API | Grants.gov search2 + legacy detail | Public APIs, no auth key required |
 | State management | Server state via API routes | Simple, no client state library needed for prototype |
@@ -24,7 +24,6 @@ SQLite over Postgres: For a single-user prototype, SQLite eliminates external DB
 ## Tradeoffs Made
 | What | Production Approach | Assessment Shortcut | Reason |
 |---|---|---|---|
-| Database | Postgres (Neon/Supabase) | SQLite file | Zero config, fast iteration |
 | Grant details | Cache + background sync | Fetch on demand from legacy API | Simpler, fewer moving parts |
 | Pipeline UI | Drag-and-drop kanban | Dropdown status selector | Faster to build, same functionality |
 | AI scoring | Queue + cache results | Synchronous per-request | Adequate for demo scale |
@@ -37,7 +36,6 @@ SQLite over Postgres: For a single-user prototype, SQLite eliminates external DB
 - Export pipeline to CSV/PDF for board reports
 
 ## What I'd Change in Production
-- Postgres on Neon/Supabase for concurrent access and durability
 - Auth (Clerk or Auth.js) with org-level isolation
 - Rate limiting on AI scoring endpoint
 - Background job queue for AI scoring (avoid blocking requests)
