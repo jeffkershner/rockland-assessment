@@ -1,12 +1,12 @@
 # Build Log
 
 > Timer started: [10:45]
-> Timer ended: [HH:MM]
-> Total time: [X hrs Y mins]
+> Timer ended: [13:30]
+> Total time: [2 hrs 45 mins]
 
 ## Log
 
-### [10:45] Started — reading prompt.
+### [10:45] Started — reading problem set.
 
 ### [11:00] It took me longer to understand the requirements, but I think I have an idea. 
 
@@ -63,10 +63,10 @@ Added enums for PipelineStatus
 
 ### [13:20] Adding husky pre-push hook to validate build and tests pass before commiting code
 
-### [13:30] Deployed
+### [13:20] Deployed
 https://rockland-assessment.vercel.app
 
-### [00:XX] Submitted
+### [13:30] Submitted
 
 ---
 
