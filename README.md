@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Rockland Grants
+
+Grant discovery and pipeline tracker for FQHC (Federally Qualified Health Center) CFOs. Search Grants.gov for funding opportunities, score them with AI for organizational fit, and track applications through a kanban pipeline.
+
+## Features
+
+- **Discover** — Search Grants.gov for federal grant opportunities by keyword
+- **AI Scoring** — Claude analyzes each grant against your organization's profile and returns a 0–100 fit score with actionable recommendations
+- **Pipeline** — Track grants through stages: Researching → Qualifying → Applying → Submitted → Awarded
+- **Org Profile** — Configure your FQHC's clinical focus, population served, budget, and current funders to personalize AI scoring
+
+## Tech Stack
+
+- Next.js 16 (App Router, TypeScript)
+- Prisma ORM + Neon Postgres
+- Claude API (Anthropic SDK) for AI scoring
+- shadcn/ui + Tailwind CSS
+- Vitest for testing
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
+cp .env.example .env.local   # Add your DATABASE_URL and ANTHROPIC_API_KEY
+npx prisma generate
+npx prisma db push
+npm run seed                  # Load demo data
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Scripts
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Command | Description |
+|---|---|
+| `npm run dev` | Start dev server |
+| `npm run build` | Production build (runs prisma generate first) |
+| `npm test` | Run test suite (22 tests) |
+| `npm run seed` | Seed database with demo org + grants |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Deployment
 
-## Learn More
+CI/CD is configured via Vercel. Pushing to `main` will automatically deploy to https://rockland-assessment.vercel.app. A pre-push hook runs tests and build locally before allowing the push.
 
-To learn more about Next.js, take a look at the following resources:
+## Documentation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [Requirements](docs/REQUIREMENTS.md) — Problem statement, user stories, scope, and data model
+- [Decisions](docs/DECISIONS.md) — Stack choices, architecture decisions, tradeoffs, and production considerations
+- [Build Log](docs/BUILD_LOG.md) — Timestamped development log, blockers, and future improvements
