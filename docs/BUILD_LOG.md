@@ -58,9 +58,13 @@ Added enums for PipelineStatus
 - Deploying early to make sure it deploys correctly with vercel 
 - Can't use file based database on vercel, switching to neon
 
-### [00:XX] Build passing
+### [13:10] Adding API tests
+- Had claude code add 22 tests for the API
 
-### [00:XX] Deployed
+### [13:20] Adding husky pre-push hook to validate build and tests pass before commiting code
+
+### [13:30] Deployed
+https://rockland-assessment.vercel.app
 
 ### [00:XX] Submitted
 
@@ -69,7 +73,7 @@ Added enums for PipelineStatus
 ## Blockers & How I Resolved Them
 - I had to open it up the assessment in a different browser because Safari didn't have the links working!
 - Took a while to find the correct APIs at grants.gov (Claude was helpful with this)
-- 
+- When deploying early, I realized that vercel doesn't allow file writing had to switch to real database
 
 ## If I Had 30 More Minutes
 - Implement drag and drop on the kanban board
